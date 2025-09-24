@@ -5,6 +5,16 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
+// Test route
+app.get("/", (req, res) => {
+  res.send("✅ OTP Backend API is running on Vercel!");
+});
+
+// Example API
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "Hello from OTP backend!" });
+});
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Lưu OTP tạm thời: { "email": { otp: 123456, expire: 1690000000000 } }
@@ -57,5 +67,4 @@ app.post('/verify-otp', (req, res) => {
   return res.status(400).json({ error: 'Invalid OTP' });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = app; // ✅ chỉ cần export một lần
