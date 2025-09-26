@@ -32,7 +32,7 @@ app.post('/send-otp', async (req, res) => {
 
   const msg = {
     to: email,
-    from: 'yourapp@gmail.com', // phải là email đã verify trên SendGrid
+    from: 'loinguyenaiapps@gmail.com', // phải là email đã verify trên SendGrid
     subject: 'Your OTP Code',
     text: `Your OTP code is ${otp}. It will expire in 5 minutes.`,
   };
